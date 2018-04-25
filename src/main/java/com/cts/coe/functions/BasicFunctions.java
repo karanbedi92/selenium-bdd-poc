@@ -10,7 +10,10 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public class BasicFunctions {
 	public String baseUrl = "http://the-internet.herokuapp.com/login";
-	static String driverPath = "D:\\cloud\\chromedriver_win32\\chromedriver.exe";
+	
+//	static String driverPath = "D:\\cloud\\chromedriver_win32\\chromedriver.exe";
+	static String driverPath = "usr/local/share/chromedriver";
+	
 	/// usr/local/share/chromedriver
 	// <- For Ubuntu
 	// String driverPath = "C:\\BrowserDriver\\chromedriver.exe"; // <- For
