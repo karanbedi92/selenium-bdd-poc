@@ -75,7 +75,7 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 	public void i_am_on_the_home_page_with_URL(String url) throws Throwable {
 
 		driver = getWebDriverInstance(url);
-		driver.get(url);
+		driver.get("http://the-internet.herokuapp.com/login");
 	}
 
 	@Then("^I should see Home Page$")
