@@ -25,5 +25,5 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Clone Git repo and build/execute automation package
 RUN git clone -b master --single-branch https://github.com/ganeshtidke0901/selenium-bdd-poc.git
-WORKDIR selenium-bdd-poc
-RUN mvn install
+WORKDIR /selenium-bdd-poc
+
