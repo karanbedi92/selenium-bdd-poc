@@ -10,10 +10,11 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public class BasicFunctions {
 	public String baseUrl = "http://the-internet.herokuapp.com/login";
-	
-//	static String driverPath = "D:\\cloud\\chromedriver_win32\\chromedriver.exe";
+
+	// static String driverPath =
+	// "D:\\cloud\\chromedriver_win32\\chromedriver.exe";
 	static String driverPath = "/usr/local/share/chromedriver";
-	
+
 	/// usr/local/share/chromedriver
 	// <- For Ubuntu
 	// String driverPath = "C:\\BrowserDriver\\chromedriver.exe"; // <- For
@@ -22,11 +23,10 @@ public class BasicFunctions {
 
 	public void launchApplication() {
 		System.setProperty("webdriver.chrome.driver", driverPath);
-		// ChromeDriverManager.getInstance().setup();
+		ChromeDriverManager.getInstance().setup();
 		ChromeOptions options = new ChromeOptions();
 
-		 options.addArguments("--headless",
-		 "--disable-gpu","window-size=1920,1080","--no-sandbox");
+		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
 		driver = new ChromeDriver(options);
 
 		/*
@@ -50,8 +50,16 @@ public class BasicFunctions {
 			return driver;
 		}
 		System.setProperty("webdriver.chrome.driver", driverPath);
+		ChromeDriverManager.getInstance().setup();
 		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
 		driver = new ChromeDriver(options);
+		/*
+		 * DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		 * String[] options = new String[] { "--start-maximized", "--headless"
+		 * }; capabilities.setCapability("chrome.switches", options); driver =
+		 * new RemoteWebDriver(service.getUrl(), capabilities);
+		 */
 
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		return driver;
