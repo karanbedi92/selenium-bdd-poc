@@ -6,14 +6,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
+import com.gargoylesoftware.htmlunit.javascript.host.Window;
+
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public class BasicFunctions {
 	public String baseUrl = "http://the-internet.herokuapp.com/login";
 
-	// static String driverPath =
-	// "D:\\cloud\\chromedriver_win32\\chromedriver.exe";
-	static String driverPath = "/usr/local/share/chromedriver";
+	static String driverPathForWindow = "D:\\cloud\\chromedriver_win32\\chromedriver.exe";
+	static String driverPathForLinux = "/usr/local/share/chromedriver";
 
 	/// usr/local/share/chromedriver
 	// <- For Ubuntu
@@ -22,7 +23,8 @@ public class BasicFunctions {
 	public static WebDriver driver;
 
 	public void launchApplication() {
-		System.setProperty("webdriver.chrome.driver", driverPath);
+
+		System.setProperty("webdriver.chrome.driver", driverPathForLinux);
 		ChromeDriverManager.getInstance().setup();
 		ChromeOptions options = new ChromeOptions();
 
@@ -49,8 +51,15 @@ public class BasicFunctions {
 		if (driver != null) {
 			return driver;
 		}
-		System.setProperty("webdriver.chrome.driver", driverPath);
-		ChromeDriverManager.getInstance().setup();
+
+		if (System.getProperty("os.name").contains("Windows")) {
+			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
+		} else {
+			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
+			 ChromeDriverManager.getInstance().setup();
+		}
+
+		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
 		driver = new ChromeDriver(options);
