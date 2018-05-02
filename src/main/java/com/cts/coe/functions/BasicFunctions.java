@@ -51,7 +51,9 @@ public class BasicFunctions {
 		if (driver != null) {
 			return driver;
 		}
-
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
+		
 		if (System.getProperty("os.name").contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
 		} else {
@@ -60,8 +62,8 @@ public class BasicFunctions {
 		}
 
 		
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
+		
+	
 		driver = new ChromeDriver(options);
 		/*
 		 * DesiredCapabilities capabilities = DesiredCapabilities.chrome();
