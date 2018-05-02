@@ -76,12 +76,15 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 
 		driver = getWebDriverInstance(url);
 		driver.get("http://172.18.0.22:8080/petclinic");
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
 	}
 
 	@Then("^I should see Home Page$")
 	public void i_should_see_Home_Page() throws Throwable {
 		String homeLabel = driver.findElement(By.xpath("//*[text()='Home']")).getText();
 		Assert.assertEquals("HOME", homeLabel);
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
+
 	}
 
 	@When("^I Navigate to  Add Owner$")
@@ -89,6 +92,7 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 		driver.findElement(By.xpath("//*[text()='Find owners']")).click();
 		driver.findElement(By.linkText("Add Owner")).click();
 		Thread.sleep(1000);
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
 
 	}
 
@@ -98,6 +102,8 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 		WebElement element = driver.findElement(By.xpath("//input[@name='firstName']"));
 		element.clear();
 		element.sendKeys(arg1);
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
+
 	}
 
 	@When("^I fill in Last Name \"([^\"]*)\"$")
@@ -105,6 +111,8 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 		WebElement element = driver.findElement(By.xpath("//input[@name='lastName']"));
 		element.clear();
 		element.sendKeys(arg1);
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
+
 	}
 
 	@When("^I fill in Address \"([^\"]*)\"$")
@@ -112,6 +120,8 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 		WebElement element = driver.findElement(By.xpath("//input[@name='address']"));
 		element.clear();
 		element.sendKeys(arg1);
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
+
 	}
 
 	@When("^I fill in City \"([^\"]*)\"$")
@@ -119,6 +129,8 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 		WebElement element = driver.findElement(By.xpath("//input[@name='city']"));
 		element.clear();
 		element.sendKeys(arg1);
+		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
+
 	}
 
 	@When("^I fill in Telephone \"([^\"]*)\"$")
@@ -241,4 +253,5 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 		closeApplication();
 	}
 
+	
 }

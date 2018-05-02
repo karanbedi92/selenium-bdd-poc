@@ -1,6 +1,11 @@
 package com.cts.coe.functions;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -38,7 +43,7 @@ public class BasicFunctions {
 		 * new RemoteWebDriver(service.getUrl(), capabilities);
 		 */
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 		driver.get(baseUrl);
 		// String expectedTitle = "The Internet";
 		// String actualTitle = driver.getTitle();
@@ -49,18 +54,26 @@ public class BasicFunctions {
 	public static WebDriver getWebDriverInstance(String baseUrl) {
 
 		if (driver != null) {
+			System.out.println("Driver instance is returned");
 			return driver;
 		}
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
+		
+
+
+		
 		
 		if (System.getProperty("os.name").contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
+			System.out.println("added for windows");
 		} else {
 			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
 			 ChromeDriverManager.getInstance().setup();
+				System.out.println("added for ubuntu");			 
+			 
 		}
 
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
 		
 		
 	
@@ -72,7 +85,8 @@ public class BasicFunctions {
 		 * new RemoteWebDriver(service.getUrl(), capabilities);
 		 */
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		System.out.println("driver is created");
 		return driver;
 
 	}
@@ -87,4 +101,25 @@ public class BasicFunctions {
 		function.launchApplication();
 		function.closeApplication();
 	}
+	
+	 public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
+
+	        //Convert web driver object to TakeScreenshot
+
+	        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+
+	        //Call getScreenshotAs method to create image file
+
+	                File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+	            //Move image file to new destination
+
+	                File DestFile=new File(fileWithPath);
+
+	                //Copy file at destination
+
+	                FileUtils.copyFile(SrcFile, DestFile);
+
+	    }
+
 }
