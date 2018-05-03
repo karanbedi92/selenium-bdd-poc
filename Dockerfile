@@ -26,9 +26,7 @@ RUN ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 RUN set -xe \
     && apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl socat \
-    && apt-get install -y --no-install-recommends xvfb x11vnc fluxbox xterm \
     && apt-get install -y --no-install-recommends sudo \
-    && apt-get install -y --no-install-recommends supervisor \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -xe \

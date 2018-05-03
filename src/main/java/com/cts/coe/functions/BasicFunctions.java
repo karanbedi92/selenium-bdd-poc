@@ -65,19 +65,18 @@ public class BasicFunctions {
 		if (System.getProperty("os.name").contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
 			System.out.println("added for windows");
+			driver = new ChromeDriver();
 		} else {
 			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
 			 ChromeDriverManager.getInstance().setup();
-				System.out.println("added for ubuntu");			 
+				System.out.println("added for ubuntu");		
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
+				driver = new ChromeDriver(options);
 			 
 		}
 
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
 		
-		
-	
-		driver = new ChromeDriver(options);
 		/*
 		 * DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		 * String[] options = new String[] { "--start-maximized", "--headless"
