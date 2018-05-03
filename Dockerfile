@@ -23,11 +23,21 @@ RUN ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 #RUN apt-get -yqq install google-chrome-stable
 #RUN rm -rf /var/lib/apt/lists/*
 
-RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list 
-RUN  apt-get update -y
-RUN  apt-get install -y google-chrome-stable
-RUN  rm -rf /var/lib/apt/lists/*
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates curl socat \
+    && apt-get install -y --no-install-recommends xvfb x11vnc fluxbox xterm \
+    && apt-get install -y --no-install-recommends sudo \
+    && apt-get install -y --no-install-recommends supervisor \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN set -xe \
+    && curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
 
 # Clone Git repo and build/execute automation package
 RUN git clone -b master --single-branch https://github.com/ganeshtidke0901/selenium-bdd-poc.git
