@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y git maven
 RUN apt-get install -y xvfb libxi6 libgconf-2-4
-RUN apt-get install -y wget unzip curl
+RUN apt-get install -y wget unzip curl gnupg
 
 # Install Chrome driver for Ubuntu
 RUN wget -N http://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
@@ -23,11 +23,11 @@ RUN ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 #RUN apt-get -yqq install google-chrome-stable
 #RUN rm -rf /var/lib/apt/lists/*
 
-RUN set -xe \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates curl socat \
-    && apt-get install -y --no-install-recommends sudo \
-    && rm -rf /var/lib/apt/lists/*
+#RUN set -xe \
+#    && apt-get update \
+#    && apt-get install -y --no-install-recommends ca-certificates curl socat \
+#    && apt-get install -y --no-install-recommends sudo \
+#    && rm -rf /var/lib/apt/lists/*
 
 RUN set -xe \
     && curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
