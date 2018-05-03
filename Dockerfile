@@ -17,7 +17,7 @@ RUN ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 RUN ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 
 # Install Chrome
-RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+#RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 RUN apt-get -yqq update
 RUN apt-get -yqq install google-chrome-stable
