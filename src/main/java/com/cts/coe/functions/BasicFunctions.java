@@ -1,14 +1,20 @@
 package com.cts.coe.functions;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
 import com.gargoylesoftware.htmlunit.javascript.host.Window;
@@ -51,7 +57,7 @@ public class BasicFunctions {
 
 	}
 
-	public static WebDriver getWebDriverInstance(String baseUrl) {
+	public static WebDriver getWebDriverInstance(String baseUrl) throws MalformedURLException {
 
 		if (driver != null) {
 			System.out.println("Driver instance is returned");
@@ -68,12 +74,20 @@ public class BasicFunctions {
 			driver = new ChromeDriver();
 		} else {
 			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
-			 ChromeDriverManager.getInstance().setup();
-				System.out.println("added for ubuntu");		
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
-				driver = new ChromeDriver(options);
-			 
+//			 ChromeDriverManager.getInstance().setup();
+//				System.out.println("added for ubuntu");		
+//				ChromeOptions options = new ChromeOptions();
+//				options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
+//				driver = new ChromeDriver(options);
+//			
+			  String url = "http://localhost:4444/wd/hub";
+		        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+		        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+//
+//		        // Create a new instance of the remote web driver
+		         driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
+
+
 		}
 
 		
