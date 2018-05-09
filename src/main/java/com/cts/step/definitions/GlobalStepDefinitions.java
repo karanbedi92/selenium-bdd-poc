@@ -7,7 +7,6 @@ import java.util.Random;
 import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -76,7 +75,7 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 
 		driver = getWebDriverInstance(url);
 //		driver.get("http://172.18.0.22:8080/petclinic/");
-		driver.get("http://localhost:8080/petclinic/");
+		driver.get("http://172.17.0.2:8080/petclinic/");
 		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
 	}
 

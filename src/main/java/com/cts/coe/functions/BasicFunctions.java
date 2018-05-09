@@ -31,7 +31,7 @@ public class BasicFunctions {
 	// <- For Ubuntu
 	// String driverPath = "C:\\BrowserDriver\\chromedriver.exe"; // <- For
 	/// Windows
-	public static WebDriver driver;
+	public static RemoteWebDriver driver;
 
 	public void launchApplication() {
 
@@ -57,7 +57,7 @@ public class BasicFunctions {
 
 	}
 
-	public static WebDriver getWebDriverInstance(String baseUrl) throws MalformedURLException {
+	public static RemoteWebDriver getWebDriverInstance(String baseUrl) throws MalformedURLException {
 
 		if (driver != null) {
 			System.out.println("Driver instance is returned");
@@ -68,12 +68,12 @@ public class BasicFunctions {
 
 		
 		
-		if (System.getProperty("os.name").contains("Windows")) {
-			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
-			System.out.println("added for windows");
-			driver = new ChromeDriver();
-		} else {
-			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
+//		if (System.getProperty("os.name").contains("Windows")) {
+//			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
+//			System.out.println("added for windows");
+//			driver = new ChromeDriver();
+//		} else {
+//			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
 //			 ChromeDriverManager.getInstance().setup();
 //				System.out.println("added for ubuntu");		
 //				ChromeOptions options = new ChromeOptions();
@@ -88,7 +88,7 @@ public class BasicFunctions {
 		         driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
 
 
-		}
+//		}
 
 		
 		/*
