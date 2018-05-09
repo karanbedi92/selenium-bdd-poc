@@ -32,6 +32,7 @@ public class BasicFunctions {
 	// String driverPath = "C:\\BrowserDriver\\chromedriver.exe"; // <- For
 	/// Windows
 	public static RemoteWebDriver driver;
+	WebDriver dfc;
 
 	public void launchApplication() {
 

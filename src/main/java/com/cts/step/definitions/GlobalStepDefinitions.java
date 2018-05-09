@@ -75,7 +75,7 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 
 		driver = getWebDriverInstance(url);
 //		driver.get("http://172.18.0.22:8080/petclinic/");
-		driver.get("http://172.17.0.2:8080/petclinic/");
+		driver.get("http://172.17.0.5:8080/petclinic/");
 		takeSnapShot(driver, new Random().nextInt(1000) + ""+"image.png");
 	}
 
