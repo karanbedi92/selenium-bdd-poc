@@ -81,7 +81,7 @@ public class BasicFunctions {
 //				options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
 //				driver = new ChromeDriver(options);
 //			
-			  String url = "http://localhost:4444/wd/hub";
+			  String url = "http://192.168.40.192:4444/wd/hub";
 		        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
 		        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
 //
