@@ -15,9 +15,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
-
-import com.gargoylesoftware.htmlunit.javascript.host.Window;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
@@ -85,7 +82,6 @@ public class BasicFunctions {
 			url = "http://" + hubHostIP + ":4444/wd/hub";
 
 		}
-
 		DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
 		desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
 		//

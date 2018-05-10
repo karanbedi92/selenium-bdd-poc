@@ -1,10 +1,7 @@
 package com.cts.step.definitions;
 
-import cucumber.api.java.en.*;
-
 import java.util.Random;
 
-import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -12,7 +9,12 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import com.cts.coe.pages.ApplicationLoginPage;
-import cucumber.api.PendingException;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.But;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class GlobalStepDefinitions extends ApplicationLoginPage {
 	@Given("^I am on the \"([^\"]*)\" page on URL \"([^\"]*)\"$")
@@ -74,8 +76,6 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 	public void i_am_on_the_home_page_with_URL(String webAppURL) throws Throwable {
 
 		driver = getWebDriverInstance(webAppURL);
-		// driver.get("http://172.18.0.22:8080/petclinic/");
-
 		webAppURL = "http://172.17.0.5:8080/petclinic/";
 		String webAppIP = System.getProperty("web.app.docker.ip");
 		if (webAppIP != null && !webAppIP.isEmpty() && !webAppIP.equals("")) {
