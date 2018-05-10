@@ -64,34 +64,36 @@ public class BasicFunctions {
 			System.out.println("Driver instance is returned");
 			return driver;
 		}
-		
 
+		// if (System.getProperty("os.name").contains("Windows")) {
+		// System.setProperty("webdriver.chrome.driver", driverPathForWindow);
+		// System.out.println("added for windows");
+		// driver = new ChromeDriver();
+		// } else {
+		// System.setProperty("webdriver.chrome.driver", driverPathForLinux);
+		// ChromeDriverManager.getInstance().setup();
+		// System.out.println("added for ubuntu");
+		// ChromeOptions options = new ChromeOptions();
+		// options.addArguments("--headless", "--disable-gpu",
+		// "window-size=1920,1080", "--no-sandbox");
+		// driver = new ChromeDriver(options);
+		//
+		String url = "http://192.168.40.192:4444/wd/hub";
 
-		
-		
-//		if (System.getProperty("os.name").contains("Windows")) {
-//			System.setProperty("webdriver.chrome.driver", driverPathForWindow);
-//			System.out.println("added for windows");
-//			driver = new ChromeDriver();
-//		} else {
-//			System.setProperty("webdriver.chrome.driver", driverPathForLinux);
-//			 ChromeDriverManager.getInstance().setup();
-//				System.out.println("added for ubuntu");		
-//				ChromeOptions options = new ChromeOptions();
-//				options.addArguments("--headless", "--disable-gpu", "window-size=1920,1080", "--no-sandbox");
-//				driver = new ChromeDriver(options);
-//			
-			  String url = "http://192.168.40.192:4444/wd/hub";
-		        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-		        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
-//
-//		        // Create a new instance of the remote web driver
-		         driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
+		String hubHostIP = System.getProperty("hub.host.ip");
+		if (hubHostIP != null && !hubHostIP.isEmpty() && !hubHostIP.equals("")) {
+			url = "http://" + hubHostIP + ":4444/wd/hub";
 
+		}
 
-//		}
+		DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+		desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+		//
+		// // Create a new instance of the remote web driver
+		driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
 
-		
+		// }
+
 		/*
 		 * DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		 * String[] options = new String[] { "--start-maximized", "--headless"
@@ -115,25 +117,25 @@ public class BasicFunctions {
 		function.launchApplication();
 		function.closeApplication();
 	}
-	
-	 public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
 
-	        //Convert web driver object to TakeScreenshot
+	public static void takeSnapShot(WebDriver webdriver, String fileWithPath) throws Exception {
 
-	        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+		// Convert web driver object to TakeScreenshot
 
-	        //Call getScreenshotAs method to create image file
+		TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
 
-	                File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+		// Call getScreenshotAs method to create image file
 
-	            //Move image file to new destination
+		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
-	                File DestFile=new File(fileWithPath);
+		// Move image file to new destination
 
-	                //Copy file at destination
+		File DestFile = new File(fileWithPath);
 
-	                FileUtils.copyFile(SrcFile, DestFile);
+		// Copy file at destination
 
-	    }
+		FileUtils.copyFile(SrcFile, DestFile);
+
+	}
 
 }
