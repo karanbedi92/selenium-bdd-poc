@@ -83,6 +83,7 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 
 		}
 		driver.get(webAppURL);
+		Thread.sleep(12000);
 		takeSnapShot(driver, new Random().nextInt(1000) + "" + "image.png");
 	}
 
