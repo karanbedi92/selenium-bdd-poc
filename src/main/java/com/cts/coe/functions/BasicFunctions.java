@@ -28,7 +28,7 @@ public class BasicFunctions {
 	// <- For Ubuntu
 	// String driverPath = "C:\\BrowserDriver\\chromedriver.exe"; // <- For
 	/// Windows
-	public static RemoteWebDriver driver;
+	public  RemoteWebDriver driver;
 	WebDriver dfc;
 
 	public void launchApplication() {
@@ -55,40 +55,40 @@ public class BasicFunctions {
 
 	}
 
-	public static RemoteWebDriver getWebDriverInstance(String baseUrl) throws MalformedURLException {
+	public  RemoteWebDriver getWebDriverInstance(String baseUrl) throws MalformedURLException {
 
 		if (driver != null) {
 			System.out.println("Driver instance is returned");
 			return driver;
 		}
 
-		// if (System.getProperty("os.name").contains("Windows")) {
-		// System.setProperty("webdriver.chrome.driver", driverPathForWindow);
-		// System.out.println("added for windows");
-		// driver = new ChromeDriver();
-		// } else {
-		// System.setProperty("webdriver.chrome.driver", driverPathForLinux);
-		// ChromeDriverManager.getInstance().setup();
-		// System.out.println("added for ubuntu");
-		// ChromeOptions options = new ChromeOptions();
-		// options.addArguments("--headless", "--disable-gpu",
-		// "window-size=1920,1080", "--no-sandbox");
-		// driver = new ChromeDriver(options);
-		//
-		String url = "http://192.168.40.192:4444/wd/hub";
+		 if (System.getProperty("os.name").contains("Windows")) {
+		 System.setProperty("webdriver.chrome.driver", driverPathForWindow);
+		 System.out.println("added for windows");
+		 driver = new ChromeDriver();
+		 } else {
+		 System.setProperty("webdriver.chrome.driver", driverPathForLinux);
+		 ChromeDriverManager.getInstance().setup();
+		 System.out.println("added for ubuntu");
+		 ChromeOptions options = new ChromeOptions();
+		 options.addArguments("--headless", "--disable-gpu",
+		 "window-size=1920,1080", "--no-sandbox");
+		 driver = new ChromeDriver(options);
+		 }
+//		String url = "http://192.168.40.192:4444/wd/hub";
+//
+//		String hubHostIP = System.getProperty("hub.host.ip");
+//		if (hubHostIP != null && !hubHostIP.isEmpty() && !hubHostIP.equals("")) {
+//			url = "http://" + hubHostIP + ":4444/wd/hub";
+//
+//		}
+//		DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+//		desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+//		//
+//		// // Create a new instance of the remote web driver
+//		driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
 
-		String hubHostIP = System.getProperty("hub.host.ip");
-		if (hubHostIP != null && !hubHostIP.isEmpty() && !hubHostIP.equals("")) {
-			url = "http://" + hubHostIP + ":4444/wd/hub";
-
-		}
-		DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-		desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
-		//
-		// // Create a new instance of the remote web driver
-		driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
-
-		// }
+		
 
 		/*
 		 * DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -103,7 +103,7 @@ public class BasicFunctions {
 
 	}
 
-	public static void closeApplication() {
+	public  void closeApplication() {
 		driver.close();
 		driver = null;
 	}

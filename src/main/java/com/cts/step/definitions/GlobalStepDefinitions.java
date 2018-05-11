@@ -76,12 +76,12 @@ public class GlobalStepDefinitions extends ApplicationLoginPage {
 	public void i_am_on_the_home_page_with_URL(String webAppURL) throws Throwable {
 
 		driver = getWebDriverInstance(webAppURL);
-		webAppURL = "http://172.17.0.5:8080/petclinic/";
-		String webAppIP = System.getProperty("web.app.docker.ip");
-		if (webAppIP != null && !webAppIP.isEmpty() && !webAppIP.equals("")) {
-			webAppURL = "http://" + webAppIP + ":8080/petclinic/";
-
-		}
+//		webAppURL = "http://172.17.0.5:8080/petclinic/";
+//		String webAppIP = System.getProperty("web.app.docker.ip");
+//		if (webAppIP != null && !webAppIP.isEmpty() && !webAppIP.equals("")) {
+//			webAppURL = "http://" + webAppIP + ":8080/petclinic/";
+//
+//		}
 		driver.get(webAppURL);
 		takeSnapShot(driver, new Random().nextInt(1000) + "" + "image.png");
 	}

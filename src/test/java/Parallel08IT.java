@@ -1,29 +1,23 @@
-package com.cts.coe.lab.utility;
-
+import org.junit.runner.RunWith;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.BeforeClass;
-import org.junit.runner.RunWith;
-import org.testng.annotations.AfterClass;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/1_add_N_Edit_pet_owner.feature",
-        glue = {"com.cts.step.definitions"},
-        tags = {"@PetClinic"},
-        plugin = {
-                "pretty",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun-reports/rerun.txt"}
-        )
-
-public class PetclinicRunner {
+        strict = true,
+        features = {"D:/cloud/selenium-bdd-poc-base/src/test/resources/features/3_add_pet.feature"},
+        plugin = {"html:D:/cloud/selenium-bdd-poc-base/target/cucumber-parallel/3"},
+        monochrome = true,
+        tags = {},
+        glue = {"com.cts.step.definitions"})
+public class Parallel08IT {
     private TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeClass(alwaysRun = true)

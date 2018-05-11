@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BDD Test Suite" verbose="1" parallel="tests" thread-count="1" configfailurepolicy="continue">
+<suite name="BDD Test Suite" verbose="1" parallel="classes" thread-count="2" configfailurepolicy="continue">
     <test name="BDD Test" annotations="JDK" preserve-order="true">
         <classes>
         
 <!--          <class name="com.cts.coe.lab.utility.CustomTestRunner" /> -->
          <class name="com.cts.coe.lab.utility.PetclinicRunner" />
+             <class name="com.cts.coe.lab.utility.PetclinicRunner2" />
         </classes>
         	
     </test>

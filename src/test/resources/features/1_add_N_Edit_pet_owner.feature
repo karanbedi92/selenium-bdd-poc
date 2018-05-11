@@ -1,6 +1,6 @@
 
 @PetClinic
-Feature: Add Pet owner 
+Feature: Add N Edit Pet owner 
   As Admin,
   I want to Add Owner
   In order to add Pets
@@ -19,13 +19,17 @@ Feature: Add Pet owner
     And I click on Add Owner
     Then I should see owner information added with Telephone "7798662305"
 
-  Scenario: Add Second  Owner
-    When I Navigate to  Add Owner
-    And I fill in First Name "Gaurav"
-    And I fill in Last Name "Kumar"
-     And I fill in Address "abc"
+ 
+  
+   Scenario: Edit Second Owner
+    When I Navigate to  Search Owner
+      And I fill in Last Name "Kumar"
+       And I click on Find Owner
+        And I click  on name "Gaurav Kumar"
+        And click on Edit Owner
+            And I fill in First Name "Gaurav"
+     And I fill in Address "A-803,Horizon"
      And I fill in City "Pune"
     And I fill in Telephone "8898657452"
     And I click on Add Owner
     Then I should see owner information added with Telephone "8898657452"
-  
