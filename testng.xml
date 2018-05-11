@@ -7,6 +7,10 @@
 <!--          <class name="com.cts.coe.lab.utility.CustomTestRunner" /> -->
          <class name="com.cts.coe.lab.utility.PetclinicRunner" />
              <class name="com.cts.coe.lab.utility.PetclinicRunner2" />
+             <class name="com.cts.coe.lab.utility.PetclinicRunner3" />
+             <class name="com.cts.coe.lab.utility.PetclinicRunner4" />
+             <class name="com.cts.coe.lab.utility.PetclinicRunner5" />
+             <class name="com.cts.coe.lab.utility.PetclinicRunner6" />
         </classes>
         	
     </test>

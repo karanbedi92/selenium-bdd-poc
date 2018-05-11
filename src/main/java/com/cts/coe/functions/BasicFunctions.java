@@ -87,7 +87,7 @@ public class BasicFunctions {
 		//
 		// // Create a new instance of the remote web driver
 		driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
-
+//
 		
 
 		/*
