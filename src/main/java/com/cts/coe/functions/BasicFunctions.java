@@ -62,31 +62,31 @@ public class BasicFunctions {
 			return driver;
 		}
 
-		 if (System.getProperty("os.name").contains("Windows")) {
-		 System.setProperty("webdriver.chrome.driver", driverPathForWindow);
-		 System.out.println("added for windows");
-		 driver = new ChromeDriver();
-		 } else {
-		 System.setProperty("webdriver.chrome.driver", driverPathForLinux);
-		 ChromeDriverManager.getInstance().setup();
-		 System.out.println("added for ubuntu");
-		 ChromeOptions options = new ChromeOptions();
-		 options.addArguments("--headless", "--disable-gpu",
-		 "window-size=1920,1080", "--no-sandbox");
-		 driver = new ChromeDriver(options);
-		 }
-//		String url = "http://192.168.40.192:4444/wd/hub";
-//
-//		String hubHostIP = System.getProperty("hub.host.ip");
-//		if (hubHostIP != null && !hubHostIP.isEmpty() && !hubHostIP.equals("")) {
-//			url = "http://" + hubHostIP + ":4444/wd/hub";
-//
-//		}
-//		DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-//		desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
-//		//
-//		// // Create a new instance of the remote web driver
-//		driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
+//		 if (System.getProperty("os.name").contains("Windows")) {
+//		 System.setProperty("webdriver.chrome.driver", driverPathForWindow);
+//		 System.out.println("added for windows");
+//		 driver = new ChromeDriver();
+//		 } else {
+//		 System.setProperty("webdriver.chrome.driver", driverPathForLinux);
+//		 ChromeDriverManager.getInstance().setup();
+//		 System.out.println("added for ubuntu");
+//		 ChromeOptions options = new ChromeOptions();
+//		 options.addArguments("--headless", "--disable-gpu",
+//		 "window-size=1920,1080", "--no-sandbox");
+//		 driver = new ChromeDriver(options);
+//		 }
+		String url = "http://192.168.40.192:4444/wd/hub";
+
+		String hubHostIP = System.getProperty("hub.host.ip");
+		if (hubHostIP != null && !hubHostIP.isEmpty() && !hubHostIP.equals("")) {
+			url = "http://" + hubHostIP + ":4444/wd/hub";
+
+		}
+		DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+		desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+		//
+		// // Create a new instance of the remote web driver
+		driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
 
 		
 
