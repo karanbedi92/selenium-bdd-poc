@@ -104,7 +104,7 @@ public class BasicFunctions {
 	}
 
 	public  void closeApplication() {
-		driver.close();
+		driver.quit();
 		driver = null;
 	}
 
